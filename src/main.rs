@@ -5,10 +5,10 @@ mod db;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // load .env file using dotenvy
-    dotenv().ok();
+    dotenvy::dotenv().ok();
 
     // get database url from env
-    let database_url = env::var("DATABASE_URL")
+    let database_url = std::env::var("DATABASE_URL")
         .expect("DATABASE_URL must be set in the .env file or environment.");
     
     println!("Connecting to database...");
@@ -30,6 +30,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // print success
     println!("Database migrations completed successfully!");
     println!("Starting gift registry application...");
+
+    // TODO: Test repository pattern
+    // Example:
+    // let user_repo = UserRepository::new(pool.clone());
+    // let users = user_repo.list_all().await?;
+    // println!("Current users: {:?}", users);
+    
 
     Ok(())
 }

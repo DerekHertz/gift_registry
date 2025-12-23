@@ -8,12 +8,23 @@ edition = "2024"
 tokio = { version = "1", features = ["full"] }
 
 # database
-sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "postgres", "uuid", "chrono", "migrate"] }
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "postgres", "uuid", "chrono", "migrate", "decimal"] }
 
 # utilities
 uuid = { version = "1", features = ["v4", "serde"] }
 chrono = { version = "0.4", features = ["serde"] }
 dotenvy = "0.15"
+rand = "0.8"
+rust_decimal = { version = "1.33", features = ["serde-float", "serde-arbitrary-precision"] }
+
+# serialization
+serde = { version = "1.0", features = ["derive"] }
+
+# error handling
+thiserror = "1.0"
+
+# password hashing
+bcrypt = "0.15"
 
 [dev-dependencies]
 # for testing
